@@ -1,5 +1,8 @@
 defineLazyProperty(impl, "Element", function() {
     function Element(doc, localName, namespaceURI, prefix) {
+        if (namespaceURI == HTML_NAMESPACE) {
+            return new HTMLElement(doc, localName, prefix);
+        }
         this.ownerDocument = doc;
         this.localName = localName;
         this.namespaceURI = namespaceURI;
